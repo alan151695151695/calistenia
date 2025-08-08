@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 import copy from "../lib/copy";
 
 export const metadata = {
-  title: "Calistenia FX – Guía Completa (ES)",
+  title: "Calistenia – Guía Completa (ES)",
   description: "Entrena en cualquier lugar con +421 videos y acceso inmediato."
 };
 
