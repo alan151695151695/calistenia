@@ -15,7 +15,6 @@ export default function Hero({
   const paymentIcons = [
     { Icon: CreditCard, label: "Tarjeta de crédito" },
     { Icon: DollarSign, label: "Pagos internacionales" },
-    { Icon: Barcode, label: "Boleto" },
     { Icon: ShieldCheck, label: "Pago seguro" },
   ];
 

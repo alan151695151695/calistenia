@@ -69,16 +69,10 @@ export default function Pricing({
               className="mt-6 flex flex-wrap items-center justify-center gap-6 text-zinc-200"
             >
               <div className="flex items-center gap-2">
-                <QrCode className="h-6 w-6" /> <span className="text-sm">Pix / QR</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <CreditCard className="h-6 w-6" /> <span className="text-sm">Visa / Master / Amex</span>
               </div>
               <div className="flex items-center gap-2">
                 <BadgeDollarSign className="h-6 w-6" /> <span className="text-sm">Pago seguro</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Barcode className="h-6 w-6" /> <span className="text-sm">Boleto</span>
               </div>
             </motion.div>
           )}
