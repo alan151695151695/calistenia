@@ -13,7 +13,6 @@ export default function Hero({
   backgroundImage = "/images/hero-bg.jpg"
 }) {
   const paymentIcons = [
-    { Icon: QrCode, label: "Pix o QR" },
     { Icon: CreditCard, label: "Tarjeta de crédito" },
     { Icon: DollarSign, label: "Pagos internacionales" },
     { Icon: Barcode, label: "Boleto" },
