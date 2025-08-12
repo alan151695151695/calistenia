@@ -78,9 +78,9 @@ const copy = {
       },
       {
         imageSrc: "/images/bonus-planche.png",
-        title: "DOMINA LA PLANCHE",
+        title: "DOMINA LA PLANCHA",
         descHtml:
-          "Método paso a paso para <strong>pasar de principiante</strong> a <strong>controlar la planche</strong>, desarrollando fuerza, equilibrio y técnica usando solo tu peso corporal.",
+          "Método paso a paso para <strong>pasar de principiante</strong> a <strong>controlar la plancha</strong>, desarrollando fuerza, equilibrio y técnica usando solo tu peso corporal.",
       },
       {
         imageSrc: "/images/bonus-dna.png",

@@ -26,10 +26,16 @@ export default function Pricing({
           className="text-center max-w-3xl mx-auto"
         >
           {/* Eyebrows */}
-          <motion.p variants={fadeInUp} className="text-3xl md:text-4xl font-extrabold tracking-tight">
+          <motion.p
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl font-extrabold tracking-tight"
+          >
             {eyebrowTop}
           </motion.p>
-          <motion.p variants={fadeInUp} className="text-2xl md:text-3xl font-extrabold text-sky-500">
+          <motion.p
+            variants={fadeInUp}
+            className="text-2xl md:text-3xl font-extrabold text-sky-500"
+          >
             {eyebrowBlue}
           </motion.p>
 
@@ -39,7 +45,10 @@ export default function Pricing({
           </motion.p>
 
           {/* Precio grande con “Por apenas” y pastilla azul */}
-          <motion.p variants={fadeInUp} className="mt-3 text-3xl md:text-5xl font-extrabold">
+          <motion.p
+            variants={fadeInUp}
+            className="mt-3 text-3xl md:text-5xl font-extrabold"
+          >
             Por apenas{" "}
             <span className="inline-block rounded-md bg-sky-600 px-3 md:px-4 py-1 md:py-2 text-white">
               {priceLabel}
@@ -47,9 +56,10 @@ export default function Pricing({
           </motion.p>
 
           {/* Cuotas */}
-          <motion.p variants={fadeInUp} className="mt-2 text-zinc-300">
-            
-          </motion.p>
+          <motion.p
+            variants={fadeInUp}
+            className="mt-2 text-zinc-300"
+          ></motion.p>
 
           {/* CTA rojo grande */}
           <motion.div variants={fadeInUp} className="mt-8">
@@ -58,7 +68,14 @@ export default function Pricing({
               size="lg"
               className="bg-red-600 hover:bg-red-700 text-white font-bold py-6 text-lg w-full max-w-xl mx-auto rounded-lg"
             >
-              <a href={ctaHref} aria-label={ctaLabel}>{ctaLabel}</a>
+              <a
+                href="https://pay.hotmart.com/J101312426B?checkoutMode=10"
+                aria-label={ctaLabel}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {ctaLabel}
+              </a>
             </Button>
           </motion.div>
 
@@ -69,10 +86,12 @@ export default function Pricing({
               className="mt-6 flex flex-wrap items-center justify-center gap-6 text-zinc-200"
             >
               <div className="flex items-center gap-2">
-                <CreditCard className="h-6 w-6" /> <span className="text-sm">Visa / Master / Amex</span>
+                <CreditCard className="h-6 w-6" />{" "}
+                <span className="text-sm">Visa / Master / Amex</span>
               </div>
               <div className="flex items-center gap-2">
-                <BadgeDollarSign className="h-6 w-6" /> <span className="text-sm">Pago seguro</span>
+                <BadgeDollarSign className="h-6 w-6" />{" "}
+                <span className="text-sm">Pago seguro</span>
               </div>
             </motion.div>
           )}

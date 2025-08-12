@@ -30,7 +30,6 @@ export default function Page() {
       <AccessSteps {...copy.access} />
       <Trust {...copy.trust} />
       <Pricing {...copy.pricing} />
-      <CTA {...copy.cta} />
       <Footer {...copy.footer} />
     </main>
   );

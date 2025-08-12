@@ -2,7 +2,13 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../lib/anim";
 import { Button } from "@/components/ui/button";
-import { CreditCard, DollarSign, QrCode, Barcode, ShieldCheck } from "lucide-react";
+import {
+  CreditCard,
+  DollarSign,
+  QrCode,
+  Barcode,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function Hero({
   badge,
@@ -10,7 +16,7 @@ export default function Hero({
   subtitle,
   ctaLabel,
   ctaHref,
-  backgroundImage = "/images/hero-bg.jpg"
+  backgroundImage = "/images/hero-bg.jpg",
 }) {
   const paymentIcons = [
     { Icon: CreditCard, label: "Tarjeta de crédito" },
@@ -78,7 +84,12 @@ export default function Hero({
               size="lg"
               className="bg-red-600 hover:bg-red-700 text-white font-bold py-6 px-8 text-lg rounded-lg w-full md:w-auto"
             >
-              <a href={ctaHref} aria-label={ctaLabel}>
+              <a
+                href="https://pay.hotmart.com/J101312426B?checkoutMode=10"
+                aria-label={ctaLabel}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {ctaLabel}
               </a>
             </Button>

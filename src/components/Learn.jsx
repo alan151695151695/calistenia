@@ -31,7 +31,9 @@ export default function Learn({
           >
             {title.split(" ").map((w, i) =>
               w.toLowerCase().includes("aprender") ? (
-                <span key={i} className="text-sky-400">{w} </span>
+                <span key={i} className="text-sky-400">
+                  {w}{" "}
+                </span>
               ) : (
                 w + " "
               )
@@ -107,7 +109,14 @@ export default function Learn({
               size="lg"
               className="bg-red-600 hover:bg-red-700 text-white font-bold py-6 px-8 text-lg rounded-lg w-full md:w-auto"
             >
-              <a href={ctaHref} aria-label={ctaLabel}>{ctaLabel}</a>
+              <a
+                href="https://pay.hotmart.com/J101312426B?checkoutMode=10"
+                aria-label={ctaLabel}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {ctaLabel}
+              </a>
             </Button>
           </motion.div>
         </motion.div>
