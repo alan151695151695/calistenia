@@ -32,21 +32,23 @@ export default function RootLayout({ children }) {
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '1120879250017867');
+              fbq('init', '2703267366549389');
               fbq('track', 'PageView');
             `,
           }}
         />
         {/* End Meta Pixel Code */}
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {/* Meta Pixel noscript fallback (debe ir en <body>, no en <head>) */}
         <noscript>
           <img
             height="1"
             width="1"
             style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1120879250017867&ev=PageView&noscript=1"
+            src="https://www.facebook.com/tr?id=2703267366549389&ev=PageView&noscript=1"
             alt=""
           />
         </noscript>
