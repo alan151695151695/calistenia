@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../lib/anim";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import { CreditCard, QrCode, BadgeDollarSign, Barcode } from "lucide-react";
 
 export default function Pricing({
@@ -69,7 +69,7 @@ export default function Pricing({
               className="bg-red-600 hover:bg-red-700 text-white font-bold py-6 text-lg w-full max-w-xl mx-auto rounded-lg"
             >
               <a
-                href="https://pay.hotmart.com/J101312426B?checkoutMode=10"
+                href="/api/pay?redirect=1"
                 aria-label={ctaLabel}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -87,11 +87,11 @@ export default function Pricing({
             >
               <div className="flex items-center gap-2">
                 <CreditCard className="h-6 w-6" />{" "}
-                <span className="text-sm">Visa / Master / Amex</span>
+                <span className="text-sm">TARJETAS DE CRÉDITO Y DÉBITO</span>
               </div>
               <div className="flex items-center gap-2">
                 <BadgeDollarSign className="h-6 w-6" />{" "}
-                <span className="text-sm">Pago seguro</span>
+                <span className="text-sm">TRANSFERENCIAS BANCARIAS</span>
               </div>
             </motion.div>
           )}

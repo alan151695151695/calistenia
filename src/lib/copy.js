@@ -148,18 +148,15 @@ const copy = {
   pricing: {
     eyebrowTop: "Oferta especial",
     eyebrowBlue: "¡Por tiempo limitado!",
-    originalPrice: "de USD 29.99",
+    originalPrice: "de 39,999 Pesos Argentinos",
     preface: "por apenas",
-    priceLabel: "USD 4.99",
+    priceLabel: "4,999 Pesos Argentinos",
     ctaLabel: "Sí, quiero empezar ahora",
     ctaHref: "/checkout",
     showPayments: [
-      "VISA",
-      "MasterCard",
-      "American Express",
-      "Elo",
-      "Hipercard",
-      "Boleto",
+      "TARJETA DE CREDITO",
+      "TARJETA DE DEBITO",
+      "TRANSFERENCIA",
     ], // puedes dejar solo los que uses
   },
   cta: {

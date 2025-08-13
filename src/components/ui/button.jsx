@@ -1,55 +1,97 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva } from "class-variance-authority";
+"use client";
+import React from "react";
 
-import { cn } from "@/lib/utils"
-
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-  {
-    variants: {
-      variant: {
-        default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
-      },
-      size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
-
-function Button({
-  className,
-  variant,
-  size,
+export function Button({
+  children,
+  className = "",
   asChild = false,
+  size = "default",
+  disabled = false,
+  onClick,
+  // Datos para el pixel (edítalos si quieres)
+  pixelAmount = 5999,
+  pixelCurrency = "ARS",
+  pixelContentName = "PAQUETE COMPLETO DE CALISTENIA",
   ...props
 }) {
-  const Comp = asChild ? Slot : "button"
+  const [busy, setBusy] = React.useState(false);
 
+  // Inyectamos un onClick que:
+  // - Si el href apunta a /api/pay (con o sin ?redirect=1), dispara Pixel
+  // - Hace POST /api/pay y abre el payment_link devuelto
+  const enhanceOnClick = (origOnClick, childProps) => async (e) => {
+    const href = childProps?.href;
+    const target = childProps?.target;
+
+    const isPayLink =
+      typeof href === "string" && href.includes("/api/pay"); // /api/pay o /api/pay?redirect=1
+
+    if (isPayLink) {
+      e.preventDefault();
+
+      try {
+        if (typeof window !== "undefined" && window.fbq) {
+          window.fbq("track", "InitiateCheckout", {
+            value: pixelAmount,
+            currency: pixelCurrency,
+            content_name: pixelContentName,
+          });
+        }
+      } catch {}
+
+      setBusy(true);
+      try {
+        const r = await fetch("/api/pay", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: "{}",
+        });
+        const j = await r.json();
+        const link = j?.payment_link;
+
+        if (link) {
+          if (target === "_blank") window.open(link, "_blank", "noopener");
+          else window.location.assign(link);
+        } else {
+          // Fallback: si por alguna razón no vino link, dejamos que navegue al href original (GET)
+          window.location.assign(href);
+        }
+      } catch (err) {
+        console.error("Error creando pago:", err);
+        // Fallback a GET
+        window.location.assign(href);
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
+
+    // No es link de pago: comportamiento normal
+    origOnClick?.(e);
+    onClick?.(e);
+  };
+
+  // asChild: clona al hijo (<a>) para pasarle className y onClick
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children, {
+      className: [children.props.className, className].filter(Boolean).join(" "),
+      onClick: enhanceOnClick(children.props.onClick, children.props),
+      "aria-disabled": disabled ? true : undefined,
+      ...props,
+    });
+  }
+
+  // Botón normal
   return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props} />
+    <button
+      className={className}
+      disabled={disabled || busy}
+      onClick={enhanceOnClick(onClick, {})}
+      {...props}
+    >
+      {children}
+    </button>
   );
 }
 
-export { Button, buttonVariants }
+export const buttonVariants = () => "";

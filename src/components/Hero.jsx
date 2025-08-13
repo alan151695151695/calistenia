@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../lib/anim";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import {
   CreditCard,
   DollarSign,
@@ -19,9 +19,9 @@ export default function Hero({
   backgroundImage = "/images/hero-bg.jpg",
 }) {
   const paymentIcons = [
-    { Icon: CreditCard, label: "Tarjeta de crédito" },
-    { Icon: DollarSign, label: "Pagos internacionales" },
-    { Icon: ShieldCheck, label: "Pago seguro" },
+    { Icon: CreditCard, label: "CRÉDITO Y DÉBITO" },
+    { Icon: DollarSign, label: "PAGOS EN PESOS (ARS)" },
+    { Icon: ShieldCheck, label: "TRANSFERENCIAS" },
   ];
 
   return (
@@ -85,7 +85,7 @@ export default function Hero({
               className="bg-red-600 hover:bg-red-700 text-white font-bold py-6 px-8 text-lg rounded-lg w-full md:w-auto"
             >
               <a
-                href="https://pay.hotmart.com/J101312426B?checkoutMode=10"
+                href="/api/pay?redirect=1"
                 aria-label={ctaLabel}
                 target="_blank"
                 rel="noopener noreferrer"

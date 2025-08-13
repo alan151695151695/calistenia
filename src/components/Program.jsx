@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "./ui/card";
 import { fadeInUp, staggerContainer } from "../lib/anim";
 
 export default function Program({
@@ -42,23 +42,43 @@ export default function Program({
               {/* Resalta algunas palabras para acercarlo al look de la referencia */}
               {highlight
                 ?.replaceAll("+421", "<span class='text-sky-400'>+421</span>")
-                ?.replaceAll("Calistenia", "<span class='text-sky-400'>Calistenia</span>")
-                ?.replaceAll("paquete", "<span class='text-sky-400'>paquete</span>")
-                ?.replaceAll("Paquete", "<span class='text-sky-400'>Paquete</span>")
-                ? (
-                  <span
-                    className="[&_span]:text-sky-400"
-                    dangerouslySetInnerHTML={{
-                      __html: highlight
-                        .replaceAll("+421", "<span class='text-sky-400'>+421</span>")
-                        .replaceAll("Calistenia", "<span class='text-sky-400'>Calistenia</span>")
-                        .replaceAll("paquete", "<span class='text-sky-400'>paquete</span>")
-                        .replaceAll("Paquete", "<span class='text-sky-400'>Paquete</span>"),
-                    }}
-                  />
-                ) : (
-                  highlight
-                )}
+                ?.replaceAll(
+                  "Calistenia",
+                  "<span class='text-sky-400'>Calistenia</span>"
+                )
+                ?.replaceAll(
+                  "paquete",
+                  "<span class='text-sky-400'>paquete</span>"
+                )
+                ?.replaceAll(
+                  "Paquete",
+                  "<span class='text-sky-400'>Paquete</span>"
+                ) ? (
+                <span
+                  className="[&_span]:text-sky-400"
+                  dangerouslySetInnerHTML={{
+                    __html: highlight
+                      .replaceAll(
+                        "+421",
+                        "<span class='text-sky-400'>+421</span>"
+                      )
+                      .replaceAll(
+                        "Calistenia",
+                        "<span class='text-sky-400'>Calistenia</span>"
+                      )
+                      .replaceAll(
+                        "paquete",
+                        "<span class='text-sky-400'>paquete</span>"
+                      )
+                      .replaceAll(
+                        "Paquete",
+                        "<span class='text-sky-400'>Paquete</span>"
+                      ),
+                  }}
+                />
+              ) : (
+                highlight
+              )}
             </h2>
 
             <ul className="mt-6 space-y-3 text-zinc-300 text-lg">
